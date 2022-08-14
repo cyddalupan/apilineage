@@ -11,6 +11,7 @@ class WikiFolderViewSet(viewsets.ModelViewSet):
 class WikiBaseViewSet(viewsets.ModelViewSet):
     serializer_class = WikiBaseSerializer
     queryset = WikiBase.objects.all()
+    
 
 class WikiContentViewSet(viewsets.ModelViewSet):
     serializer_class = WikiContentSerializer

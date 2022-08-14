@@ -27,5 +27,4 @@ router.register('wikicontent', WikiContentViewSet, basename='wikicontent')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/<int:pk>/', include(router.urls)),
 ]
