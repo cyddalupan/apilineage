@@ -17,10 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from wiki.views import WikiBaseViewSet, WikiContentViewSet, WikiFolderViewSet
+from wiki.views import WikiBaseViewSet, WikiContentViewSet
 
 router = DefaultRouter()
-router.register('wikifolder', WikiFolderViewSet, basename='wikifolder')
 router.register('wikibase', WikiBaseViewSet, basename='wikibase')
 router.register('wikicontent', WikiContentViewSet, basename='wikicontent')
 

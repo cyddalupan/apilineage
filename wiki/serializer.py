@@ -1,12 +1,6 @@
 from rest_framework import serializers
 
-from .models import WikiBase, WikiContent, WikiFolder
-
-class WikiFolderSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WikiFolder
-        fields = "__all__"
-
+from .models import WikiBase, WikiContent
 
 class WikiBaseSerializer(serializers.ModelSerializer):
     class Meta:

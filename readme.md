@@ -5,6 +5,5 @@
 ### Endpoints
 
 - WIKI
-  - wikifolder
   - wikibase
   - wikicontent
