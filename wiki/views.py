@@ -29,6 +29,13 @@ class WikiBaseViewSet(viewsets.ModelViewSet):
             for strtag in arrtag:
                 flattag.add(strtag.strip())
         return Response(flattag)
+    
+    @action(detail=True)
+    def content(self, request, pk=None):
+        content = {}
+        if pk is not None:
+            content = WikiContent.objects.filter(base_id=pk).filter(is_approved=True).values().last()
+        return Response(content)
 
 class WikiContentViewSet(viewsets.ModelViewSet):
     serializer_class = WikiContentSerializer
