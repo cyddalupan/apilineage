@@ -17,11 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from wiki.views import WikiBaseViewSet, WikiContentViewSet
+from wiki.views import WikiViewSet
 
 router = DefaultRouter()
-router.register('wikibase', WikiBaseViewSet, basename='wikibase')
-router.register('wikicontent', WikiContentViewSet, basename='wikicontent')
+router.register('wiki', WikiViewSet, basename='wiki')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
