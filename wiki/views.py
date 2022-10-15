@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import filters
 
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -18,6 +19,8 @@ class WikiViewSet(viewsets.ModelViewSet):
     serializer_class = WikiSerializer
     queryset = Wiki.objects.all()
     pagination_class = StandardResultsSetPagination
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'content']
 
     @action(detail=False)
     @method_decorator(cache_page(60*60*24))
