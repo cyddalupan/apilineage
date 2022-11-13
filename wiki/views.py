@@ -17,10 +17,16 @@ class StandardResultsSetPagination(PageNumberPagination):
 # Create viewset here
 class WikiViewSet(viewsets.ModelViewSet):
     serializer_class = WikiSerializer
-    queryset = Wiki.objects.all()
     pagination_class = StandardResultsSetPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'content']
+
+    def get_queryset(self):
+        queryset = Wiki.objects.all()
+        tag = self.request.query_params.get('tag')
+        if tag is not None:
+            queryset = queryset.filter(tags__contains=tag)
+        return queryset
 
     @action(detail=False)
     @method_decorator(cache_page(60*60*24))
